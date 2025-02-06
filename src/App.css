@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.workspace-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.workspace-container {
+  display: flex;
+  flex: 1;
+}
+
+.workspace-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .workspace-container {
+    flex-direction: column;
+  }
+
+  .blockly-workspace,
+  .code-panel {
+    height: 50%;
+  }
+}
