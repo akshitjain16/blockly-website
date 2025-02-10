@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <a href="/">
-          <img src="/images/logo.png" alt="Logo" />
+          <img src="/images/logo.svg" alt="Logo" />
           <span>Blockly Workspace</span>
         </a>
       </div>
