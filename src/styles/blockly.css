@@ -1,0 +1,38 @@
+.blockly-workspace {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+}
+.blocklyToolboxDiv {
+  background-color: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.blocklyTreeRow {
+  padding: 8px;
+  margin: 0;
+  height: auto;
+}
+
+.blocklyTreeLabel {
+  font-family: inherit;
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.blocklyFlyout {
+  border-right: 1px solid #e5e7eb;
+}
+
+.blocklyMainBackground {
+  stroke: none;
+}
+
+.dark .blocklyToolboxDiv {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .blocklyFlyout {
+  border-color: #374151;
+}

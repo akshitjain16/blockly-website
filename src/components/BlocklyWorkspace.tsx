@@ -1,17 +1,14 @@
 import { useEffect, useRef } from 'react';
 import * as Blockly from 'blockly';
 import { javascriptGenerator } from 'blockly/javascript';
-import './BlocklyWorkspace.css';
-import { pythonGenerator } from "blockly/python";
 import { setHindiLocale } from '../locales/hindi';
 
 interface BlocklyWorkspaceProps {
-  language: string;
   onCodeChange: (code: string) => void;
   onXmlChange: (xml: string) => void;
 }
 
-const BlocklyWorkspace = ({ language, onCodeChange, onXmlChange }: BlocklyWorkspaceProps) => {
+const BlocklyWorkspace = ({ onCodeChange, onXmlChange }: BlocklyWorkspaceProps) => {
   const blocklyDiv = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<Blockly.WorkspaceSvg | null>(null);
 
@@ -95,10 +92,7 @@ const BlocklyWorkspace = ({ language, onCodeChange, onXmlChange }: BlocklyWorksp
       workspaceRef.current = ws;
 
       ws.addChangeListener(() => {
-        const generatedCode =
-          language === 'javascript'
-            ? javascriptGenerator.workspaceToCode(ws)
-            : pythonGenerator.workspaceToCode(ws);
+        const generatedCode = javascriptGenerator.workspaceToCode(ws)
         onCodeChange(generatedCode);
         const xml = Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(ws));
         onXmlChange(xml);
@@ -111,17 +105,13 @@ const BlocklyWorkspace = ({ language, onCodeChange, onXmlChange }: BlocklyWorksp
         workspaceRef.current = null;
       }
     };
-  }, []); // Empty dependency array to run only once
-
+  }, []); 
   useEffect(() => {
     if (workspaceRef.current) {
-      const generatedCode =
-        language === 'javascript'
-          ? javascriptGenerator.workspaceToCode(workspaceRef.current)
-          : pythonGenerator.workspaceToCode(workspaceRef.current);
+      const generatedCode = javascriptGenerator.workspaceToCode(workspaceRef.current);
       onCodeChange(generatedCode);
     }
-  }, [language, onCodeChange]);
+  }, [onCodeChange]);
 
   return <div ref={blocklyDiv} className="blockly-workspace"></div>;
 };
